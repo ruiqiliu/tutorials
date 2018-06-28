@@ -37,6 +37,7 @@ public class SparkRestExample {
             response.type("application/json");
 
             User toEdit = new Gson().fromJson(request.body(), User.class);
+            toEdit.setId(request.params(":id"));
             User editedUser = userService.editUser(toEdit);
 
             if (editedUser != null) {
